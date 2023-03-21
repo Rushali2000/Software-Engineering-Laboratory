@@ -32,5 +32,8 @@ Route::get('/community', function () {
 Route::view('profile', 'index');
 Route::view('application', 'index');
 Route::get('profile', [App\Http\Controllers\profileController::class, 'index']);
+Route::get('community', [App\Http\Controllers\communityController::class, 'index']);
 Route::get('application', [App\Http\Controllers\applicationController::class, 'index']);
+Route::get('application', [App\Http\Controllers\appController::class, 'index']);
 Route::post('add', [App\Http\Controllers\profileController::class, 'add']);
+Route::post('add', [App\Http\Controllers\applicationController::class, 'add']);

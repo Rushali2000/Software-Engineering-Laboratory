@@ -24,10 +24,14 @@ class profileController extends Controller
 
     {
         $profile =new profile();
-        $profile->skills=$request('skills');
-      //  $profile->email=$request('email');
-       // $profile->phone_no=$request('phone_no');
-        //$profile->description=$request('description');
+        $profile->name=$request['name'];
+        $profile->email=$request['email'];
+        $profile->description=$request['description'];
+        $profile->phone_no=$request['phone_no'];
+        $profile->skills=$request['skills'];
+        $profile->endorsed=$request['endorsed'];
+        $profile->endorsed=$request['prior_experience'];
+       
         $profile->save();
         
       // return $request->input();

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\application;
+use App\Models\community;
+use App\Http\Controllers\profileController;
 use Illuminate\Http\Request;
 
-class applicationController extends Controller
+class communityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +14,9 @@ class applicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-   
-    {  
-        $application =new application();
-        $application= application::all();
-        return view('app.application',compact('application'));
+    {
+        $community= community::all();
+        return view('community.indexCom',compact('$profile'));
     }
 
     /**
@@ -40,28 +39,17 @@ class applicationController extends Controller
     {
         //
     }
-    
     public function add(Request $request)
     {
-        $application =new application();
-        $application->name=$request['name'];
-        $application->email=$request['email'];
-        $application->phone_no=$request['phone_no'];
-        $application->address=$request['address'];
-        // $application->interest=$request['interest'];
-        $application->resume=$request['resume'];
-        $application->cover_letter=$request['cover_letter'];
-       
-        $application->save();
+        //
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\application  $application
+     * @param  \App\Models\community  $community
      * @return \Illuminate\Http\Response
      */
-    public function show(application $application)
+    public function show(community $community)
     {
         //
     }
@@ -69,10 +57,10 @@ class applicationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\application  $application
+     * @param  \App\Models\community  $community
      * @return \Illuminate\Http\Response
      */
-    public function edit(application $application)
+    public function edit(community $community)
     {
         //
     }
@@ -81,10 +69,10 @@ class applicationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\application  $application
+     * @param  \App\Models\community  $community
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, application $application)
+    public function update(Request $request, community $community)
     {
         //
     }
@@ -92,10 +80,10 @@ class applicationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\application  $application
+     * @param  \App\Models\community  $community
      * @return \Illuminate\Http\Response
      */
-    public function destroy(application $application)
+    public function destroy(community $community)
     {
         //
     }

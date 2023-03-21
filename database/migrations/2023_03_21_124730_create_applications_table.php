@@ -14,12 +14,15 @@ class CreateApplicationsTable extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
-            $table->string('name');
+            $table->text('name');
+            $table->text('email');
+            $table->text('phone_no');
            
-            $table->text('application');
+            $table->text('address');
            
-            $table->text('interest');
-           
+            // $table->text('interest');
+            $table->text('resume');
+            $table->text('cover_letter');
         });
     }
 

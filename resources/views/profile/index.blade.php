@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@foreach($profile as $var)
+<!-- @foreach($profile as $var)
 {{$var->name,
   $var->email,
   $var->phone_no,
@@ -9,7 +9,7 @@
   $var->endorsed,
   $var->prior_experience
 }}
-@endforeach
+@endforeach -->
 @if(Session::get('success'))
 <div class="alert alert-success">
   {{Session::get('success')}}
@@ -66,42 +66,53 @@
 
   <img src="/images/img_avatar.png" style=" height:150px;width:150px;border-radius:50%;" alt="Avatar">
   <hr>
+
   <div class="align-right"> <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-pen-to-square"></i></button></div>
 
   <div class="modal" id="myModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title">Edit Information</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"></span>
           </button>
         </div>
-        <div class="modal-body">
+        <form method="POST" action="add">
+          @csrf
+          <div class="modal-body">
 
-          <div class="form-group">
-            <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Name</label>
-            <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="name" id="name">
-            <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Email</label>
-            <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="email" id="email">
-            <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Phone Number</label>
-            <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="phone_no" id="phone_no">
-            <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Description</label>
-            <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="description" id="description">
+            <div class="form-group">
+              <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Name</label>
+              <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="name" id="name">
+              <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Email</label>
+              <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="email" id="email">
+              <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Description</label>
+              <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="description" id="description">
+              <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Phone Number</label>
+              <input type="text" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="phone_no" id="phone_no">
+              <label for="exampleTextarea" class="form-label mt-4">Skills</label>
+              <textarea type="text" class="form-control" name="skills" id="skills" rows="3" spellcheck="false"></textarea>
+              <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Endorsed</label>
+              <input type="number" class="form-control form-control-sm" type="text" placeholder=".form-control-sm" name="endorsed" id="endorsed">
+              <label for="exampleTextarea" class="form-label mt-4">Prior Experience</label>
+              <textarea type="text" class="form-control" name="prior_experience" id="prior_experience" rows="3" spellcheck="false"></textarea>
+            </div>
+
           </div>
 
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" id="submit" name="submit">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="submit" name="submit">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-
-
+  @foreach($profile as $var)
   <h3>Description</h3>
-  <p><em>This part will contain description</em>.</p>
+  <p><em>{{$var->description}}</em>.</p>
+  @endforeach
   <hr>
   <div class="form-group row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
@@ -122,7 +133,7 @@
     </div>
   </div>
   <legend>Skills</legend>
-  <div class="align-right"> <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal1"><i class="fa-solid fa-pen-to-square"></i></button></div>
+  <!-- <div class="align-right"> <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal1"><i class="fa-solid fa-pen-to-square"></i></button></div>
   <div class="modal" id="myModal1">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -132,27 +143,27 @@
             <span aria-hidden="true"></span>
           </button>
         </div>
-        <form method="POST" action="add">
-          @csrf
-          <div class="modal-body">
+         <form method="POST" action="add">
+          @csrf -->
+  <!-- <div class="modal-body">
 
-            <div class="form-group">
-              <label for="exampleTextarea" class="form-label mt-4">Example textarea</label>
-              <textarea type="text" class="form-control" name="skills" id="skills" rows="3" spellcheck="false"></textarea>
-            </div>
+          <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4">Example textarea</label>
+            <textarea type="text" class="form-control" name="skills" id="skills" rows="3" spellcheck="false"></textarea>
           </div>
+        </div>
 
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" id="submit" name="submit">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </form>
-
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="submit" name="submit">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div> -->
+  <!-- </form> -->
+  <!-- 
       </div>
 
     </div>
 
-  </div>
+  </div> -->
   @foreach($profile as $var)
 
   <ul class="list-group">
@@ -166,7 +177,7 @@
 
 
   <legend>Prior Experiences</legend>
-  <div class="align-right"> <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal2"><i class="fa-solid fa-pen-to-square"></i></button></div>
+  <!-- <div class="align-right"> <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal2"><i class="fa-solid fa-pen-to-square"></i></button></div>
   <div class="modal" id="myModal2">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -188,17 +199,17 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   @foreach($profile as $var)
 
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    {{$var->prior_experience}} 
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{$var->prior_experience}}
 
-  </li>
+    </li>
 
-</ul>
-@endforeach
-  
+  </ul>
+  @endforeach
+
 
   @endsection
