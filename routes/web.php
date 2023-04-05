@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\CampaignController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\DataController;
 
 Route::get('/', [HomeController::class, 'HomeIndex']);
 Route::post('dataInsert', [HomeController::class, 'DataInsert']);
-
+Route::post('campaignInsert', [HomeController::class, 'CampaignInsert']);
+Route::post('donationInsert', [CampaignController::class, 'DonationInsert']);
 
 Route::get('/newData', [DataController::class, 'DataTableIndex']);
+Route::get('/newCampaign', [CampaignController::class, 'CampaignTableIndex']);
+Route::get('/createDonation', [CampaignController::class, 'DonationIndex']);

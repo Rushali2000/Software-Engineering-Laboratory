@@ -63,6 +63,14 @@
         <br>
         <a class="btn btn-success" style="flex:left" href="/newData">See All Posts</a>
         <br>
+        <br>
+        <h1>Campaigns</h1>
+        <br>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcampaign">Create New Campaign</button>
+        <br>
+        <br>
+        <a class="btn btn-danger" style="flex:left" href="/newCampaign">See All Campaigns</a>
+        <br>
         <!--<form action="dataInsert" method="post" enctype="multipart/form-data">
             <label for="title" class="control-label">Title: </label>
             <input type="text" name="title" class="form-control"><br>
@@ -75,7 +83,7 @@
     </div>
 
 
-    <!-- Modal -->
+    <!-- Modal Post -->
 <div class="modal fade" id="addpost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
   <form action="dataInsert" method="post" enctype="multipart/form-data">
@@ -129,5 +137,61 @@
     </form>
   </div>
 </div>
+
+<!-- Modal Campaign -->
+<div class="modal fade" id="addcampaign" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+  <form action="campaignInsert" method="post" enctype="multipart/form-data">
+  <?php echo csrf_field(); ?>  
+
+  <?php echo method_field('POST'); ?> 
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create New Campaign</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Campaign Name</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="name" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Description</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="description" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Goal Amount</span>
+                                        </div>
+                                        <input type="number" class="form-control" name="goal_amount" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Organization</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="organization" required>
+                                    </div>
+                                  <!--  <form method="POST" action="" enctype="multipart/form-data"> -->
+            <div class="form-group">
+                <input class="form-control" type="file" name="uploadfile" />
+            </div>
+        <!--</form> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" href="/">Close</button>
+        <button type="submit" class="btn btn-primary" >Save changes</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
 </body>
 </html><?php /**PATH C:\xampp\htdocs\SE\volunteer\resources\views/Home.blade.php ENDPATH**/ ?>

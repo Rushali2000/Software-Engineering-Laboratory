@@ -57,15 +57,8 @@
 
 
     <div class="container my-5">
-        <h1>Posts</h1>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addpost">Create New Post</button>
-        <br>
-        <br>
-        <a class="btn btn-success" style="flex:left" href="/newData">See All Posts</a>
-        <br>
-        <br>
+        
         <h1>Campaigns</h1>
-        <br>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcampaign">Create New Campaign</button>
         <br>
         <br>
@@ -83,60 +76,7 @@
     </div>
 
 
-    <!-- Modal Post -->
-<div class="modal fade" id="addpost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-  <form action="dataInsert" method="post" enctype="multipart/form-data">
-  @csrf  
-
-  @method('POST') 
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Create New Post</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Title</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="title" required>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Date</span>
-                                        </div>
-                                        <input type="date" class="form-control" name="date" required>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Description</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="description" required>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Organization</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="organization" required>
-                                    </div>
-                                  <!--  <form method="POST" action="" enctype="multipart/form-data"> -->
-            <div class="form-group">
-                <input class="form-control" type="file" name="uploadfile" />
-            </div>
-        <!--</form> -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" href="/">Close</button>
-        <button type="submit" class="btn btn-primary" href="/postData">Save changes</button>
-      </div>
-    </div>
-    </form>
-  </div>
-</div>
+    
 
 <!-- Modal Campaign -->
 <div class="modal fade" id="addcampaign" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
