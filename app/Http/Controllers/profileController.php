@@ -17,28 +17,35 @@ class profileController extends Controller
     public function index()
 
     {
-        $profile= profile::all();
-        return view('profile.index',compact('profile'));
+        $profile = profile::all();
+        return view('profile.index', compact('profile'));
     }
-    public function add(Request $request)
+    public function showSkills()
 
     {
-        $profile =new profile();
-        $profile->name=$request['name'];
-        $profile->email=$request['email'];
-        $profile->description=$request['description'];
-        $profile->phone_no=$request['phone_no'];
-        $profile->skills=$request['skills'];
-        $profile->endorsed=$request['endorsed'];
-        $profile->endorsed=$request['prior_experience'];
-       
-        $profile->save();
-        
-      // return $request->input();
-       // $request->validate([
-       //     'name'=>'required'|unique:profile
+       $profile= profile::all();
+       return view('orgfeed.feedback', compact('profile'));
+    }
+    
+    public function add1(Request $request)
 
-     //   ]);
+    {
+        $profile = new profile();
+        $profile->name = $request['name'];
+        $profile->email = $request['email'];
+        $profile->description = $request['description'];
+        $profile->phone_no = $request['phone_no'];
+        $profile->skills = $request['skills'];
+        $profile->endorsed = $request['endorsed'];
+        $profile->endorsed = $request['prior_experience'];
+
+        $profile->save();
+
+        // return $request->input();
+        // $request->validate([
+        //     'name'=>'required'|unique:profile
+
+        //   ]);
         // $query=DB::table('profile')->insert([
         //     'skills'=>$request->input('skills'),
         //    // 'email'=>$request->input('email'),
@@ -62,7 +69,7 @@ class profileController extends Controller
      */
     public function create()
     {
-        return view('profile.index');
+     //   return view('profile.index');
     }
 
     /**
@@ -73,11 +80,11 @@ class profileController extends Controller
      */
     public function store(Request $request)
     {
-        $profile =new profile();
-        $profile->name=$request('name');
-        $profile->email=$request('email');
-        $profile->phone_no=$request('phone_no');
-        $profile->description=$request('description');
+        $profile = new profile();
+        $profile->name = $request('name');
+        $profile->email = $request('email');
+        $profile->phone_no = $request('phone_no');
+        $profile->description = $request('description');
         $profile->save();
     }
 
@@ -89,7 +96,7 @@ class profileController extends Controller
      */
     public function show(profile $profile)
     {
-        return view('profile.show');  
+       // return view('profile.show');
     }
 
     /**

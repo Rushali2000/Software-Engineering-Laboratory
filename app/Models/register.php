@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class profile extends Model
+class register extends Model
 {
     use HasFactory;
+    public $table="registered";
     public $timestamps = false;
-    public $table="profiles";
-   
 }

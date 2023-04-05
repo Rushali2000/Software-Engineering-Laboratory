@@ -78,7 +78,7 @@
             <span aria-hidden="true"></span>
           </button>
         </div>
-        <form method="POST" action="add">
+        <form method="POST" action="add1">
           @csrf
           <div class="modal-body">
 
@@ -168,12 +168,13 @@
 
   <ul class="list-group">
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      {{$var->skills}} <i class="fa-solid fa-star"></i>
-      <span class="badge bg-primary rounded-pill"> {{$var->endorsed}}</span>
+      {{$var->skills}} <div class="align-right"> <button type="button" id="countButton" onclick="" class="btn btn-outline-secondary" ><i class="fa-solid fa-star"></i></button></div></i>
+      <span class="badge bg-primary rounded-pill" id="count" > {{$var->endorsed}}</span>
     </li>
 
   </ul>
   @endforeach
+  
 
 
   <legend>Prior Experiences</legend>
