@@ -42,6 +42,7 @@ Route::get('org', [App\Http\Controllers\listingController::class, 'show']);
 Route::get('vol', [App\Http\Controllers\listingController::class, 'showVols']);
 Route::get('view', [App\Http\Controllers\listingController::class, 'showLists']);
 Route::get('orgfeed', [App\Http\Controllers\profileController::class, 'showSkills']);
+Route::get('app', [App\Http\Controllers\applicationController::class, 'index']);
 
 Route::get('registered', [App\Http\Controllers\registerController::class, 'showRegister']);
 // Route::get('vol', [App\Http\Controllers\volController::class, 'index']);
@@ -51,12 +52,12 @@ Route::get('application', [App\Http\Controllers\appController::class, 'index']);
 Route::post('add1', [App\Http\Controllers\profileController::class, 'add1']);
 Route::post('add3', [App\Http\Controllers\registerController::class, 'add3']);
 Route::post('add2', [App\Http\Controllers\listingController::class, 'add2']);
-
+Route::post('/increment-count/{id}', [ProfileController::class, 'incrementCount'])->name('increment-count');
 Route::post('add', [App\Http\Controllers\applicationController::class, 'add']);
 // Route::post('/increment-count', [profileController::class, 'increment'])->name('increment-count');
 // Route::post('/increment-count', [App\Http\Controllers\listingController::class, 'increment']);
 
-//  Route::get('/org', function () {
+  //Route::get('/org', function () {
 //      return view('org.listings');
 //      });
 // Route::get('/vol', function () {

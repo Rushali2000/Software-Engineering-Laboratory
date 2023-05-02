@@ -45,6 +45,7 @@
   </div>
 </nav>
 <table class="table table-hover">
+
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -56,6 +57,7 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
+  @foreach($app as $var)
   <tbody>
     <tr class="table-dark">
       <!-- <th scope="row">Dark</th> -->
@@ -71,6 +73,7 @@
       <!-- <td>{{$var->name}}</td> -->
     </tr>
   </tbody>
+  @endforeach
 </table>
 @endsection()
  

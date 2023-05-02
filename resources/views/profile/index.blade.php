@@ -10,19 +10,8 @@
   $var->prior_experience
 }}
 @endforeach -->
-@if(Session::get('success'))
-<div class="alert alert-success">
-  {{Session::get('success')}}
 
-</div>
-@endif
-@if(Session::get('fail'))
-<div class="alert alert-danger">
-  {{Session::get('fail')}}
-
-</div>
-@endif
-
+<!-- <script src="{{ asset('js/app.js') }}"></script> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -67,7 +56,7 @@
   <img src="/images/img_avatar.png" style=" height:150px;width:150px;border-radius:50%;" alt="Avatar">
   <hr>
 
-  <div class="align-right"> <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-pen-to-square"></i></button></div>
+  <div class="align-right" style="justify-content:right;"> <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-pen-to-square"></i></button></div>
 
   <div class="modal" id="myModal">
     <div class="modal-dialog" role="document">
@@ -168,7 +157,7 @@
 
   <ul class="list-group">
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      {{$var->skills}} <div class="align-right"> <button type="button" id="countButton" onclick="" class="btn btn-outline-secondary" ><i class="fa-solid fa-star"></i></button></div></i>
+      {{$var->skills}} <div class="align-right"> <button type="button" id="countButton" onclick= onclick="incrementCount({{ $var->id }})" class="btn btn-outline-secondary" ><i class="fa-solid fa-star"></i></button></div></i>
       <span class="badge bg-primary rounded-pill" id="count" > {{$var->endorsed}}</span>
     </li>
 

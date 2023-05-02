@@ -71,6 +71,16 @@ class profileController extends Controller
     {
      //   return view('profile.index');
     }
+   
+
+  public function incrementCount($id)
+  {
+    $profile = Profile::find($id);
+    $profile->endorsed++;
+    $profile->save();
+    return response()->json(['count' => $profile->endorsed]);
+  }
+
 
     /**
      * Store a newly created resource in storage.
