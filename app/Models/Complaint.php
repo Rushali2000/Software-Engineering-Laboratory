@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Campaigns extends Model
+class Complaint extends Model
 {
-    public $table = 'campaign';
+    public $table = 'complaint';
     public $primaryKey = 'id';
     public $incrementing = true;
     public $timestamps = false;
-    protected $fillable = [
-        'raised_amount',
-    ];
 }

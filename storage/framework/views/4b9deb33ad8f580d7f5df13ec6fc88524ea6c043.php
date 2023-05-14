@@ -55,37 +55,98 @@
 </nav>
 
     <div class="container my-5">
-
-    <h1>CAMPAIGNS</h1>
-    <table class="table table-striped">
-                <thead>
-                <br>
-                    <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Organization</th>
-                        <th>Goal Amount</th>
-                        <th>Raised Amount</th>
-                        <th>Donate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $__currentLoopData = $campaignData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                        <td>
-                            <img src="<?php echo e(asset('uploads/'.$pd->image)); ?>" width="100px" alt="Image">
-                        </td>
-                        <td><?php echo e($pd->name); ?></td>
-                        <td><?php echo e($pd->description); ?></td>
-                        <td><?php echo e($pd->organization); ?></td>
-                        <td><?php echo e($pd->goal_amount); ?></td>
-                        <td><?php echo e($pd->raised_amount); ?></td>
-                        <td><a href='/createDonation?id=<?php echo e($pd->id); ?>' class="btn btn-success">Donate Now</a></td>
-                    </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
-    </table>
+    <div style="position:relative; display: flex; justify-content: space-between; align-items: center;">
+  <h1>CAMPAIGNS</h1>
+  <button type="button" class="btn btn-primary" style="position: absolute; right: 2px;" data-toggle="modal" data-target="#addcampaign">Create New Campaign</button>
+  </div>
+  <br>
+        <div class="card-deck">
+            <?php $__currentLoopData = $campaignData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$pd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="card">
+                <img src="<?php echo e(asset('uploads/'.$pd->image)); ?>" class="card-img-top" alt="Image" style="height: 500px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo e($pd->name); ?></h5>
+                    <p class="card-text"><?php echo e($pd->description); ?></p>
+                    <p class="card-text"><small class="text-muted">By <?php echo e($pd->organization); ?></small></p>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="card-text"><strong>Goal Amount: </strong><?php echo e($pd->goal_amount); ?></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="card-text"><strong>Raised Amount:</strong> <?php echo e($pd->raised_amount); ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="<?php echo e(url('/createDonation/'.$pd->id)); ?>" class="btn btn-success btn-block">Donate Now</a>
+                        </div>
+                    </div>
+                </div>
+                <?php if(($key + 1) % 3 == 0): ?>
+                <div class="w-100"></div>
+            </div>
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
     </div>
+    <!-- Modal Campaign -->
+<div class="modal fade" id="addcampaign" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+  <form action="campaignInsert" method="post" enctype="multipart/form-data">
+  <?php echo csrf_field(); ?>  
+
+  <?php echo method_field('POST'); ?> 
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create New Campaign</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Campaign Name</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="name" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Description</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="description" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Goal Amount</span>
+                                        </div>
+                                        <input type="number" class="form-control" name="goal_amount" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Organization</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="organization" required>
+                                    </div>
+                                  <!--  <form method="POST" action="" enctype="multipart/form-data"> -->
+            <div class="form-group">
+                <input class="form-control" type="file" name="uploadfile" />
+            </div>
+        <!--</form> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" href="/">Close</button>
+        <button type="submit" class="btn btn-primary" >Save changes</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
 </body>
+
+
 </html><?php /**PATH C:\xampp\htdocs\SE\volunteer\resources\views/CampaignTable.blade.php ENDPATH**/ ?>

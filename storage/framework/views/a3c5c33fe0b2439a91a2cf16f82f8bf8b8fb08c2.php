@@ -54,34 +54,93 @@
   </div>
 </nav>
 
-    <div class="container my-5">
+<div class="container my-5">
+  <div style="position:relative; display: flex; justify-content: space-between; align-items: center;">
+  <h1>POSTS</h1>
+  <button type="button" class="btn btn-primary" style="position: absolute; right: 2px;" data-toggle="modal" data-target="#addpost">Create New Post</button>
+  </div>
+  <br>
+  <div class="row">
+    <?php $__currentLoopData = $postData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="<?php echo e(asset('uploads/'.$pd->image)); ?>" alt="Post Image">
+          <div class="card-body">
+            <h5 class="card-title"><?php echo e($pd->title); ?></h5>
+            <p class="card-text"><?php echo e($pd->description); ?></p>
+            <p class="card-text"><small class="text-muted"><?php echo e($pd->date); ?></small></p>
+          </div>
+          <div class="card-footer">
+            <div class="media">
+              <img class="mr-3 rounded-circle" style="width: 40px; height:40px; border-radius: 50%;" src="<?php echo e(asset('uploads/'.$pd->image)); ?>" alt="User Profile Pic" style="width: 40px;">
+              <div class="media-body">
+                <h5 class="mt-0">User Name</h5>
+                <strong>Event By:</strong> <?php echo e($pd->organization); ?>
 
-    <h1>POSTS</h1>
-    <table class="table table-striped">
-                <thead>
-                <br>
-                    <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Organization</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $__currentLoopData = $postData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                        <td>
-                            <img src="<?php echo e(asset('uploads/'.$pd->image)); ?>" width="100px" alt="Image">
-                        </td>
-                        <td><?php echo e($pd->title); ?></td>
-                        <td><?php echo e($pd->date); ?></td>
-                        <td><?php echo e($pd->description); ?></td>
-                        <td><?php echo e($pd->organization); ?></td>
-                    </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
-    </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+  </div>
+</div>
+
+<!-- Modal Post -->
+<div class="modal fade" id="addpost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+  <form action="dataInsert" method="post" enctype="multipart/form-data">
+  <?php echo csrf_field(); ?>  
+
+  <?php echo method_field('POST'); ?> 
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create New Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Title</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="title" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Date</span>
+                                        </div>
+                                        <input type="date" class="form-control" name="date" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Description</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="description" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Organization</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="organization" required>
+                                    </div>
+                                  <!--  <form method="POST" action="" enctype="multipart/form-data"> -->
+            <div class="form-group">
+                <input class="form-control" type="file" name="uploadfile" />
+            </div>
+        <!--</form> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" href="/">Close</button>
+        <button type="submit" class="btn btn-primary" href="/postData">Save changes</button>
+      </div>
     </div>
+    </form>
+  </div>
+</div>
+
+
 </body>
 </html><?php /**PATH C:\xampp\htdocs\SE\volunteer\resources\views/DataTable.blade.php ENDPATH**/ ?>

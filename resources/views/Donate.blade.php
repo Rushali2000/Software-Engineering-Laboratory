@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,15 +55,16 @@
 </nav>
 
     <div class="container my-5">
-    <form action="donationInsert" method="post" enctype="multipart/form-data">
-  @csrf  
+    <form action="{{ url('donationInsert/'.$campaign->id) }}" method="POST" enctype="multipart/form-data">
+      @csrf    
+      @method('PUT')
 
-  @method('POST')  
         <label><strong>
             Enter Amount:
         </strong></label>
         <input type="text" name="donation_amount">
-        <button type="submit" class="btn btn-primary" href="/postData">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <?php echo "Raised until now = $campaign->raised_amount" ?>
 </form>
     </div>
 </body>
